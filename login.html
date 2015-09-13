@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Jared Everett</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="google-signin-scope" content="profile email">
+    	<meta name="google-signin-client_id" content="389727652454-tn1o7gv76835go93o8fjfgj1a2hfrhk7.apps.googleusercontent.com">
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/skel-viewport.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+			<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		    <script src="assets/js/overlay.js"></script>
+   			<script src="https://apis.google.com/js/platform.js" async defer></script>
+	    
+		    <script>
+		      $(document).ready(function() {
+		        $('.overlay').overlay();
+		      });
+		    </script>
+	
+	    <link rel="stylesheet" href="assets/css/overlay.css">
+	</head>
+	<body>
+
+		<!-- Nav -->
+			<nav id="page_nav">
+				<a href="index.html#portfolio"><img src="images/arrow.png" style="width:50px;float:left;margin:5px;">
+				<span style="float:left;position:relative;color:#FFFFFF;font-weight:bold;margin:12px;font-size:22px;">Back to my portfolio</span></a>
+				
+			</nav>
+			<nav id="main_footer">
+				
+				<!--<ul class="social">
+					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+
+					<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+
+
+					<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+					
+
+					
+
+					
+				</ul>-->
+			</nav>
+			
+	<div class="wrapper style3">
+		
+			
+						<div class="row">
+							<div class="4u 12u(mobile)">
+								<section class="box style1">
+									 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+									    <script>
+									      function onSignIn(googleUser) {
+									        // Useful data for your client-side scripts:
+									        var profile = googleUser.getBasicProfile();
+											alert(profile.getName());
+									        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+									        console.log("Name: " + profile.getName());
+									        console.log("Image URL: " + profile.getImageUrl());
+									        console.log("Email: " + profile.getEmail());
+									
+									        // The ID token you need to pass to your backend:
+									        var id_token = googleUser.getAuthResponse().id_token;
+									        console.log("ID Token: " + id_token);
+											
+											
+											theParams = {
+												a: 'email',
+												id: profile.getId()	
+											}
+										
+											$.ajax({
+												type: "POST",
+												url: "assets/code/main.php",
+												data: theParams, 
+												dataType: 'xml', 
+												async: false,
+												success: function(xml) {		
+													alert(xml);
+												},
+												error: function(xhr) {
+												  alert(xhr.responseText);
+												}
+											});
+											
+											
+									      };
+									    </script>
+											</section>
+							</div>
+										
+										<div class="4u 12u(mobile)">
+								<section class="box style1">
+										
+										<a href="#" onclick="signOut();">Sign out</a>
+										<script>
+										  function signOut() {
+										    var auth2 = gapi.auth2.getAuthInstance();
+										    auth2.signOut().then(function () {
+										      console.log('User signed out.');
+										    });
+										  }
+										</script>
+										
+								</section>
+							</div>
+						</div>
+		
+		
+
+		
+		
+					<footer>
+						<a href="#contact" class="button big scrolly">Get in touch with me</a>
+					</footer>
+				
+						
+				</article>
+		
+</div>
+
+		<!-- Contact -->
+			<div class="wrapper style4">
+				<article id="contact" class="container 75%">
+					<header>
+						<h2>Get in touch with me</h2>
+					</header>
+					<div>
+						<div class="row">
+							<div class="12u">
+								<form method="post" action="#" id="contact_form">
+									<div>
+										<div class="row">
+											<div class="6u 12u(mobile)">
+												<input type="text" name="name" id="name" placeholder="Name" />
+											</div>
+											<div class="6u 12u(mobile)">
+												<input type="text" name="email" id="email" placeholder="Email" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<input type="text" name="subject" id="subject" placeholder="Subject" />
+											</div>
+										</div>
+										<div class="row">
+											<div class="12u">
+												<textarea name="message" id="message" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="row 200%">
+											<div class="12u">
+												<ul class="actions">
+													<li><input type="submit" value="Send Message" /></li>
+													<li><input type="reset" value="Clear Form" class="alt" /></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</form>
+								<script type='text/javascript'>
+
+								    $("#contact_form").submit(function(event) {
+								
+								      event.preventDefault();
+										var theParams = {
+											a: 'email',
+											name: $('#name').val(),
+											email: $('#email').val(),
+											subject: $('#subject').val(),
+											msg: $('#message').val()
+										}
+									
+										$.ajax({
+											type: "POST",
+											url: "assets/code/main.php",
+											data: theParams, 
+											dataType: 'xml', 
+											async: false
+										});
+									  
+									  alert('Message Sent.');
+									  $('#contact_form').trigger("reset");
+								    });
+								</script>
+							</div>
+						</div>
+						
+					</div>
+					<footer>
+						<ul id="copyright">
+							<li>&copy; All rights reserved.</li>
+						</ul>
+					</footer>
+				</article>
+			</div>
+
+			
+
+		
+
+	</body>
+</html>
