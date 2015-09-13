@@ -47,12 +47,12 @@ $xmlRoot = $xmlDoc->createElement('xml_root');
 $xmlDoc->appendChild($xmlRoot);
 
 //open database connection
-$dbConn = mysql_connect('localhost', 'root', 'lockview')
+$dbConn = mysql_connect('localhost', '', '')
 	or die(print_r(mysql_error()));
 
 mysql_select_db('repost') or die(print_r(mysql_error()));
 
-//$dbConn = mysqli_connect("localhost","root","lockview","repost") or die("Error " . mysqli_error($dbConn)); 
+
 
 $query = '';
 
